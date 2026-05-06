@@ -1,0 +1,77 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Playfair Display", Georgia, serif;
+  --font-script: "Great Vibes", cursive;
+
+  --color-ink: #2A0A1F;
+  --color-ink-2: #340D26;
+  --color-ink-3: #3F1030;
+  --color-ink-4: #4A133A;
+  --color-ink-5: #551644;
+
+  --color-amber-accent: #A3114A;
+  --color-amber-2: #C0205C;
+  --color-amber-3: #D94070;
+  --color-amber-pale: #EFA0BC;
+
+  --color-ivory: #F5E8EE;
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Outfit:wght@200;300;400;500&family=Great+Vibes&display=swap');
+
+@layer base {
+  body {
+    @apply bg-ink text-ivory font-sans antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display;
+  }
+}
+
+.section-eyebrow {
+  @apply inline-flex items-center gap-3.5 text-[9px] tracking-[7px] uppercase text-amber-2 mb-3.5 font-normal;
+}
+
+.section-eyebrow::before,
+.section-eyebrow::after {
+  content: '';
+  @apply w-[30px] h-px bg-amber-2 opacity-45;
+}
+
+.section-h2 {
+  @apply font-display text-[clamp(38px,5.5vw,62px)] font-bold italic text-ivory mb-14 leading-[1.08] tracking-[-0.5px];
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(26px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 1s ease-out forwards;
+}
+
+@keyframes reveal {
+  from {
+    clip-path: inset(100% 0 0 0);
+    transform: translateY(20px);
+  }
+  to {
+    clip-path: inset(0 0 0 0);
+    transform: translateY(0);
+  }
+}
+
+.reveal-text {
+  display: inline-block;
+  animation: reveal 1s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+}
